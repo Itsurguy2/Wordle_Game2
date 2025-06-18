@@ -1,4 +1,4 @@
-# Project 1 - Wordle Game and Project 2X
+# Project 1 and Project 2 - Wordle Game 
 
 Submitted by: Jesse Rosenthal
 
@@ -81,6 +81,10 @@ Here is a reminder on how to embed Loom videos on GitHub. Feel free to remove th
 
 
 <img src='https://github.com/Itsurguy2/Wordle_Game/blob/Master/Wordle%20Game%20gif.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+WORDLE GAME UPDATE VIDEO
+
+
 
 ## Notes
 

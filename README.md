@@ -1,4 +1,4 @@
-# Project 1 - Wordle Game 
+# Project 1 - Wordle Game and Project 2X
 
 Submitted by: Jesse Rosenthal
 
@@ -48,6 +48,30 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [ ] List anything else that you can get done to improve the app functionality!
+
+
+
+
+WORDLE GAME UPDATES
+
+Time spent: 5 hours spent in total
+
+The following **required** functionality is completed:
+
+- [X] User can change the number of letters per row (the length of the goal word)
+- [X] User can change the numbers of rows on the board (how many guesses allowed)
+- [X] User can select a new themed set to pull the goal word from
+- [X] User can select "alien wordle", causing the goal word to change after each guess
+
+
+The following **optional** features are implemented:
+
+- [X] App displays a reset button on the top left to reset the game (but make no changes to the settings)
+
+The following **additional** features are implemented:
+
+- [ ] List anything else that you can get done to improve the app functionality!
+
 
 ## Video Walkthrough
 

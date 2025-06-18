@@ -82,9 +82,9 @@ Here is a reminder on how to embed Loom videos on GitHub. Feel free to remove th
 
 <img src='https://github.com/Itsurguy2/Wordle_Game/blob/Master/Wordle%20Game%20gif.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-WORDLE GAME UPDATE VIDEO
+## WORDLE GAME UPDATE VIDEO
 
-
+<img src='https://github.com/Itsurguy2/Wordle_Game2/blob/Master/WordleGame%20gif%202.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ## Notes
 

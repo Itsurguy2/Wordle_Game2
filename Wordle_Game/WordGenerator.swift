@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
 
 class WordGenerator {
-    private let words = [
+    private let standardWords = [
         "ABOUT", "ABOVE", "ABUSE", "ACTOR", "ACUTE", "ADMIT", "ADOPT", "ADULT", "AFTER", "AGAIN",
         "AGENT", "AGREE", "AHEAD", "ALARM", "ALBUM", "ALERT", "ALIEN", "ALIGN", "ALIKE", "ALIVE",
         "ALLOW", "ALONE", "ALONG", "ALTER", "AMONG", "ANGER", "ANGLE", "ANGRY", "APART", "APPLE",
@@ -56,17 +57,73 @@ class WordGenerator {
         "STUDY", "STUFF", "STYLE", "SUGAR", "SUITE", "SUPER", "SWEET", "TABLE", "TAKEN", "TASTE",
         "TAXES", "TEACH", "TEAMS", "TEETH", "TERRY", "TEXAS", "THANK", "THEFT", "THEIR", "THEME",
         "THERE", "THESE", "THICK", "THING", "THINK", "THIRD", "THOSE", "THREE", "THREW", "THROW",
-        "THUMB", "THUS", "TIGER", "TIGHT", "TIMES", "TIRED", "TITLE", "TODAY", "TOPIC", "TOTAL",
-        "TOUCH", "TOUGH", "TOWER", "TRACK", "TRADE", "TRAIL", "TRAIN", "TRAIT", "TRASH", "TREAT",
-        "TREND", "TRIAL", "TRIBE", "TRICK", "TRIED", "TRIES", "TRIP", "TRUCK", "TRULY", "TRUNK",
-        "TRUST", "TRUTH", "TWICE", "UNCLE", "UNDER", "UNDUE", "UNION", "UNITY", "UNTIL", "UPPER",
-        "UPSET", "URBAN", "USAGE", "USUAL", "VALID", "VALUE", "VIDEO", "VIRUS", "VISIT", "VITAL",
-        "VOCAL", "VOICE", "WASTE", "WATCH", "WATER", "WHEEL", "WHERE", "WHICH", "WHILE", "WHITE",
-        "WHOLE", "WHOSE", "WOMAN", "WOMEN", "WORLD", "WORRY", "WORSE", "WORST", "WORTH", "WOULD",
-        "WRITE", "WRONG", "WROTE", "YOUNG", "YOUTH", "ZEBRA"
+        "THUMB", "TIGER", "TIGHT", "TIMES", "TIRED", "TITLE", "TODAY", "TOPIC", "TOTAL", "TOUCH",
+        "TOUGH", "TOWER", "TRACK", "TRADE", "TRAIL", "TRAIN", "TRAIT", "TRASH", "TREAT", "TREND",
+        "TRIAL", "TRIBE", "TRICK", "TRIED", "TRIES", "TRUCK", "TRULY", "TRUNK", "TRUST", "TRUTH",
+        "TWICE", "UNCLE", "UNDER", "UNDUE", "UNION", "UNITY", "UNTIL", "UPPER", "UPSET", "URBAN",
+        "USAGE", "USUAL", "VALID", "VALUE", "VIDEO", "VIRUS", "VISIT", "VITAL", "VOCAL", "VOICE",
+        "WASTE", "WATCH", "WATER", "WHEEL", "WHERE", "WHICH", "WHILE", "WHITE", "WHOLE", "WHOSE",
+        "WOMAN", "WOMEN", "WORLD", "WORRY", "WORSE", "WORST", "WORTH", "WOULD", "WRITE", "WRONG",
+        "WROTE", "YOUNG", "YOUTH", "ZEBRA"
     ]
     
-    func getRandomWord() -> String {
-        return words.randomElement() ?? "SWIFT"
+    private let animalWords = [
+        "BEAR", "BIRD", "BULL", "CALF", "DEER", "DUCK", "FISH", "FROG", "GOAT", "HAWK",
+        "LION", "LYNX", "MICE", "MOLE", "PONY", "SEAL", "SWAN", "TOAD", "WOLF", "WORM",
+        "BEARS", "BIRDS", "BULLS", "CALFS", "DEERS", "DUCKS", "FISHS", "FROGS", "GOATS", "HAWKS",
+        "LIONS", "MOUSE", "PANDA", "SHARK", "SHEEP", "SNAIL", "SNAKE", "TIGER", "WHALE", "ZEBRA"
+    ]
+    
+    private let colorWords = [
+        "BLUE", "CYAN", "GOLD", "GRAY", "PINK", "TEAL", "AQUA", "LIME", "NAVY", "RUBY",
+        "BLACK", "BROWN", "CORAL", "GREEN", "IVORY", "KHAKI", "LEMON", "MAROON", "OLIVE", "PEACH",
+        "PURPLE", "SILVER", "VIOLET", "WHITE", "YELLOW", "ORANGE", "INDIGO", "SALMON", "BRONZE", "ROUGE"
+    ]
+    
+    private let countryWords = [
+        "CHILE", "CHINA", "EGYPT", "GHANA", "HAITI", "INDIA", "ITALY", "JAPAN", "KENYA", "LIBYA",
+        "MALTA", "NEPAL", "NIGER", "OMAN", "QATAR", "SAMOA", "SPAIN", "SUDAN", "SYRIA", "TONGA",
+        "BRAZIL", "CANADA", "FRANCE", "GREECE", "ISRAEL", "JORDAN", "KUWAIT", "LATVIA", "MEXICO", "NORWAY",
+        "POLAND", "RUSSIA", "SWEDEN", "TURKEY", "UGANDA", "UKRAINE", "CYPRUS", "ANGOLA", "BELIZE", "BHUTAN"
+    ]
+    
+    private let foodWords = [
+        "APPLE", "BACON", "BREAD", "CANDY", "CREAM", "DONUT", "FRIES", "GRAPE", "HONEY", "JELLY",
+        "LEMON", "MANGO", "NOODLE", "OLIVE", "PASTA", "PIZZA", "SALAD", "TACO", "WAFFLE", "YOGURT",
+        "BAGEL", "BERRY", "CEREAL", "CHEESE", "COOKIE", "CURRY", "FRUIT", "GRAVY", "JUICE", "KEBAB",
+        "MAPLE", "ONION", "PEACH", "PRUNE", "SAUCE", "SPICE", "SYRUP", "TOAST", "TRUFFLE", "VANILLA"
+    ]
+    
+    func getRandomWord(theme: WordTheme = .standard, length: Int = 5) -> String {
+        let wordList = getWordList(for: theme)
+        let filteredWords = wordList.filter { $0.count == length }
+        
+        if filteredWords.isEmpty {
+            // Fallback to standard words if no words of desired length in theme
+            let fallbackWords = standardWords.filter { $0.count == length }
+            return fallbackWords.randomElement() ?? generateRandomWord(length: length)
+        }
+        
+        return filteredWords.randomElement() ?? generateRandomWord(length: length)
+    }
+    
+    private func getWordList(for theme: WordTheme) -> [String] {
+        switch theme {
+        case .standard:
+            return standardWords
+        case .animals:
+            return animalWords
+        case .colors:
+            return colorWords
+        case .countries:
+            return countryWords
+        case .food:
+            return foodWords
+        }
+    }
+    
+    private func generateRandomWord(length: Int) -> String {
+        let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        return String((0..<length).map { _ in letters.randomElement()! })
     }
 }

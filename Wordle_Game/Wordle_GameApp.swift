@@ -5,6 +5,7 @@
 //  Created by Jesse Rosenthal on 6/15/25.
 //
 
+
 import SwiftUI
 
 @main
@@ -15,3 +16,5 @@ struct WordleApp: App {
         }
     }
 }
+
+

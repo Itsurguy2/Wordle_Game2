@@ -59,7 +59,6 @@ struct KeyboardView: View {
         }
     }
 }
-
 struct KeyboardKey: View {
     let key: String
     let state: LetterState
@@ -119,3 +118,4 @@ struct KeyboardKey: View {
         }
     }
 }
+

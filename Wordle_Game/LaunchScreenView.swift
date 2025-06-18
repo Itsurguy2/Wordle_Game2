@@ -5,7 +5,7 @@
 //  Created by Jesse Rosenthal on 6/15/25.
 //
 
-import Foundation
+import Foundation 
 import SwiftUI
 
 struct LaunchScreenView: View {
